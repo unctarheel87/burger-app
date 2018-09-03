@@ -42,9 +42,7 @@ export default class Burger extends Component {
   render() {
     return (
       <div>
-        <h1>
-          < Burgers burgers={this.state.apiData} updateBurger={this.updateBurger}/>
-        </h1>
+        <Burgers burgers={this.state.apiData} updateBurger={this.updateBurger}/>
         <form onSubmit={this.addBurger}>
           <input type="text" name="burger"/>
           <button type="submit">Create Burger</button>

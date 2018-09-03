@@ -1,0 +1,14 @@
+.burger-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.burger-card {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
