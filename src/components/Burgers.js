@@ -18,7 +18,7 @@ export const Burgers = (props) => {
     if(burger.devoured === 1) {
       return (
         <div className="burger-card">
-          <p>{burger.burger_name} {burger.devoured}</p>
+          <p>{burger.burger_name}</p>
           <button onClick={(e, burger_id) => {
             props.updateBurger(e, burger.id)
             }}

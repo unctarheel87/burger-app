@@ -12,12 +12,27 @@ export default class Burger extends Component {
     this.updateBurger = this.updateBurger.bind(this)
   }
 
+  componentDidMount() {
+    this.getApiData()
+  }
+
+  getApiData() {
+    axios.get('/api/burgers')
+    .then((res) => {
+      this.setState({apiData: res.data});
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }  
+
   addBurger(e) {
     e.preventDefault()
     const newBurger = e.target.elements.burger.value
     axios.post('/api/burgers/new', { data: newBurger })
     .then((res) => {
       console.log(res)
+      this.getApiData()
     })
   }
 
@@ -26,23 +41,16 @@ export default class Burger extends Component {
     axios.post('/api/burgers', { data: burger_id })
     .then((res) => {
       console.log(res)
+      this.getApiData()
     })
-  }
-  
-  componentDidMount() {
-    axios.get('/api/burgers')
-    .then((res) => {
-      this.setState({apiData: res.data});
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   }
 
   render() {
     return (
       <div>
-        <Burgers burgers={this.state.apiData} updateBurger={this.updateBurger}/>
+        <Burgers burgers={this.state.apiData} 
+                 updateBurger={this.updateBurger}
+        />
         <form onSubmit={this.addBurger}>
           <input type="text" name="burger"/>
           <button type="submit">Create Burger</button>
