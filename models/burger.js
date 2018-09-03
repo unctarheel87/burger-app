@@ -19,6 +19,7 @@ const updateBurger = (burgerId) => {
   const burger = {
     id: burgerId
   }
+  console.log(devoured, burger)
   sqlMethods.updateOne('burgers', devoured, burger)
 }
 

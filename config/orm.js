@@ -9,8 +9,8 @@ const selectAll = (table, next) => {
 }
 
 const insertOne = (table, set) => {
-  connection.query(`INSERT INTO ${table} SET ?`
-  ,set,
+  connection.query(`INSERT INTO ${table} SET ?`,
+  set,
   (err, res) => {
     if(err) throw err
     console.log(res)
@@ -20,7 +20,7 @@ const insertOne = (table, set) => {
 const updateOne = (table, set, where) => {
   connection.query(`UPDATE ${table} 
                     SET ? WHERE ?;`,
-  set, where,
+  [set, where],
   (err, res) => {
     if(err) throw err
     console.log(res)

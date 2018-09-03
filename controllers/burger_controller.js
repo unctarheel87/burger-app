@@ -1,7 +1,7 @@
 const burgersApi = require('../models/burger')
 
 module.exports = (app) => {
-  app.get('/api', (req, res) => {
+  app.get('/api/burgers', (req, res) => {
     burgersApi.selectAllBurgers((db_data) => {
       res.json(db_data)
     })
@@ -11,11 +11,19 @@ module.exports = (app) => {
     res.sendFile('index.html')
   })
 
-  app.post('/api', (req, res) => {
+  app.post('/api/burgers/new', (req, res) => {
     console.log('sent to api!')
     const newBurger = req.body
     console.log(newBurger)
     burgersApi.createBurger(newBurger.data)
     res.send(newBurger)
+  })
+
+  app.post('/api/burgers', (req, res) => {
+    console.log('sent to api!')
+    const updateBurger = req.body
+    console.log(updateBurger)
+    burgersApi.updateBurger(updateBurger.data)
+    res.send(updateBurger)
   })
 }
