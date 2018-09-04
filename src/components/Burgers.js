@@ -5,10 +5,13 @@ export const Burgers = (props) => {
     if(burger.devoured === 0) {
       return (
         <div className="burger-card">
-          <p>{burger.burger_name} {burger.devoured}</p>
-          <button onClick={(e, burger_id) => {
-            props.updateBurger(e, burger.id)
-            }}
+          <div className="card">
+            <p>{burger.burger_name}</p>
+          </div>  
+          <button className="waves-effect waves-light btn"
+                  onClick={(e, burger_id) => {
+                    props.updateBurger(e, burger.id)
+                    }}
           >Devour It</button>
         </div>
       )
@@ -17,12 +20,8 @@ export const Burgers = (props) => {
   const devouredBurgers = props.burgers.map((burger) => {
     if(burger.devoured === 1) {
       return (
-        <div className="burger-card">
+        <div className="card">
           <p>{burger.burger_name}</p>
-          <button onClick={(e, burger_id) => {
-            props.updateBurger(e, burger.id)
-            }}
-          >Devour It</button>
         </div>
       )
     }

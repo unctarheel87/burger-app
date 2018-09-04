@@ -51,7 +51,7 @@ export default class Burger extends Component {
         <Burgers burgers={this.state.apiData} 
                  updateBurger={this.updateBurger}
         />
-        <form onSubmit={this.addBurger}>
+        <form className="new-burger" onSubmit={this.addBurger}>
           <input type="text" name="burger"/>
           <button type="submit">Create Burger</button>
         </form>
