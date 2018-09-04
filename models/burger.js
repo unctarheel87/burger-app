@@ -8,7 +8,6 @@ const createBurger = (burgerName) => {
   const newBurger = {
     burger_name: burgerName
   }
-  console.log(newBurger)
   sqlMethods.insertOne('burgers', newBurger)
 }
 
@@ -19,10 +18,16 @@ const updateBurger = (burgerId) => {
   const burger = {
     id: burgerId
   }
-  console.log(devoured, burger)
   sqlMethods.updateOne('burgers', devoured, burger)
 }
 
+const deleteBurger = (burgerId) => {
+  const burger = {
+    id: burgerId
+  }
+  sqlMethods.deleteOne('burgers', burger)
+}
+
 module.exports = {
-  createBurger, updateBurger, selectAllBurgers
+  createBurger, updateBurger, selectAllBurgers, deleteBurger
 }

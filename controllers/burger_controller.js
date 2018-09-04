@@ -14,7 +14,6 @@ module.exports = (app) => {
   app.post('/api/burgers/new', (req, res) => {
     console.log('sent to api!')
     const newBurger = req.body
-    console.log(newBurger)
     burgersApi.createBurger(newBurger.data)
     res.send(newBurger)
   })
@@ -22,8 +21,14 @@ module.exports = (app) => {
   app.post('/api/burgers', (req, res) => {
     console.log('sent to api!')
     const updateBurger = req.body
-    console.log(updateBurger)
     burgersApi.updateBurger(updateBurger.data)
     res.send(updateBurger)
+  })
+
+  app.post('/api/burgers/delete', (req, res) => {
+    console.log('sent to api!')
+    const deleteBurger = req.body
+    burgersApi.deleteBurger(deleteBurger.data)
+    res.send(deleteBurger)
   })
 }

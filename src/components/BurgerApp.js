@@ -10,6 +10,7 @@ export default class Burger extends Component {
     }
     this.addBurger = this.addBurger.bind(this)
     this.updateBurger = this.updateBurger.bind(this)
+    this.deleteBurger = this.deleteBurger.bind(this)
   }
 
   componentDidMount() {
@@ -45,15 +46,27 @@ export default class Burger extends Component {
     })
   }
 
+  deleteBurger(e, burger_id) {
+    e.preventDefault()
+    axios.post('/api/burgers/delete', { data: burger_id })
+    .then((res) => {
+      console.log(res)
+      this.getApiData()
+    })
+  }
+
   render() {
     return (
       <div>
         <Burgers burgers={this.state.apiData} 
                  updateBurger={this.updateBurger}
+                 deleteBurger={this.deleteBurger}
         />
         <form className="new-burger" onSubmit={this.addBurger}>
           <input type="text" name="burger"/>
-          <button type="submit">Create Burger</button>
+          <button className="waves-effect waves-light btn red lighten-2 burger-submit-btn" 
+                  type="submit"
+          >Create Burger</button>
         </form>
       </div>
     );

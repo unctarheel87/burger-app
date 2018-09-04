@@ -27,6 +27,16 @@ const updateOne = (table, set, where) => {
   })
 }
 
+const deleteOne = (table, where) => {
+  connection.query(`DELETE FROM ${table} 
+                    WHERE ?;`,
+  where,
+  (err, res) => {
+    if(err) throw err
+    console.log(res)
+  })
+}
+
 module.exports = {
-  selectAll, insertOne, updateOne 
+  selectAll, insertOne, updateOne, deleteOne 
 }
