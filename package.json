@@ -4,8 +4,9 @@
   "description": "React frontend with Express-powered API backend",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack --watch",
-    "start": "nodemon src/server.js"
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
+    "start": "node src/server.js"
   },
   "author": "John Tillman",
   "license": "ISC",
