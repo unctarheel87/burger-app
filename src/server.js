@@ -3,6 +3,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const app = express();
 const port = process.env.PORT || 8080;
+require("dotenv").config();
 
 //serve static files
 app.use(express.static(path.join(__dirname, '../public')))
@@ -17,4 +18,3 @@ app.listen(port, (err,res) =>  {
   if(err) throw err
   console.log('server is running...');
 })
-
