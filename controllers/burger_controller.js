@@ -11,25 +11,22 @@ module.exports = (app) => {
     res.sendFile('index.html')
   })
 
-  app.post('/api/burgers/new', (req, res) => {
+  app.post('/api/burgers/', (req, res) => {
     console.log('sent to api!')
     const newBurger = req.body
     burgers.insertOne({burger_name: newBurger.data})
     res.send(newBurger)
   })
 
-  app.post('/api/burgers', (req, res) => {
+  app.put('/api/burgers/:id', (req, res) => {
     console.log('sent to api!')
-    const updateBurger = req.body
-    console.log(updateBurger.data)
-    burgers.updateOne({devoured: true},{id: updateBurger.data})
-    res.send(updateBurger)
+    burgers.updateOne({devoured: true},{id: req.params.id})
+    res.send('successfully deleted id: ' + req.params.id)
   })
 
-  app.post('/api/burgers/delete', (req, res) => {
+  app.delete('/api/burgers/:id', (req, res) => {
     console.log('sent to api!')
-    const deleteBurger = req.body
-    burgers.deleteOne({id: deleteBurger.data})
-    res.send(deleteBurger)
+    burgers.deleteOne({id: req.params.id})
+    res.send('successfully deleted id: ' + req.params.id)
   })
 }

@@ -30,7 +30,7 @@ export default class Burger extends Component {
   addBurger(e) {
     e.preventDefault()
     const newBurger = e.target.elements.burger.value
-    axios.post('/api/burgers/new', { data: newBurger })
+    axios.post('/api/burgers', { data: newBurger })
     .then((res) => {
       console.log(res)
       this.getApiData()
@@ -39,7 +39,7 @@ export default class Burger extends Component {
 
   updateBurger(e, burger_id) {
     e.preventDefault()
-    axios.post('/api/burgers', { data: burger_id })
+    axios.put(`/api/burgers/${burger_id}`)
     .then((res) => {
       console.log(res)
       this.getApiData()
@@ -48,7 +48,7 @@ export default class Burger extends Component {
 
   deleteBurger(e, burger_id) {
     e.preventDefault()
-    axios.post('/api/burgers/delete', { data: burger_id })
+    axios.delete(`/api/burgers/${burger_id}`)
     .then((res) => {
       console.log(res)
       this.getApiData()
