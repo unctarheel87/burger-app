@@ -1,8 +1,8 @@
-const burgersApi = require('../models/burger')
+const burgers = require('../models/burger')
 
 module.exports = (app) => {
   app.get('/api/burgers', (req, res) => {
-    burgersApi.selectAllBurgers((db_data) => {
+    burgers.selectAll((db_data) => {
       res.json(db_data)
     })
   })
@@ -14,21 +14,22 @@ module.exports = (app) => {
   app.post('/api/burgers/new', (req, res) => {
     console.log('sent to api!')
     const newBurger = req.body
-    burgersApi.createBurger(newBurger.data)
+    burgers.insertOne({burger_name: newBurger.data})
     res.send(newBurger)
   })
 
   app.post('/api/burgers', (req, res) => {
     console.log('sent to api!')
     const updateBurger = req.body
-    burgersApi.updateBurger(updateBurger.data)
+    console.log(updateBurger.data)
+    burgers.updateOne({devoured: true},{id: updateBurger.data})
     res.send(updateBurger)
   })
 
   app.post('/api/burgers/delete', (req, res) => {
     console.log('sent to api!')
     const deleteBurger = req.body
-    burgersApi.deleteBurger(deleteBurger.data)
+    burgers.deleteOne({id: deleteBurger.data})
     res.send(deleteBurger)
   })
 }

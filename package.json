@@ -4,7 +4,7 @@
   "description": "React frontend with Express-powered API backend",
   "main": "webpack.config.js",
   "scripts": {
-    "build:dev": "webpack",
+    "build:dev": "webpack --watch",
     "build:prod": "webpack -p --env production",
     "start": "node src/server.js"
   },
@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "axios": "^0.18.0",
