@@ -44,7 +44,7 @@ class Schema {
       where,
       (err, res) => {
         if(err) reject(err)
-        else resolve(res)
+        else resolve(res) 
       })
     })
   }

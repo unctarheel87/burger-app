@@ -6,7 +6,7 @@
   "scripts": {
     "build:dev": "webpack --watch",
     "build:prod": "webpack -p --env production",
-    "start": "node src/server.js"
+    "start": "node server.js"
   },
   "author": "John Tillman",
   "license": "ISC",
