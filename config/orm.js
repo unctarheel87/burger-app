@@ -6,8 +6,8 @@ class Schema {
   }
   selectAll() {
     return new Promise((resolve, reject) => {
-      connection.query(`SELECT * FROM ${this.table}`, 
-      (err, res) => {
+      connection.query(`SELECT * FROM ??`, 
+      [this.table], (err, res) => {
         if(err) reject(err)
         else resolve(res)
       })
@@ -16,8 +16,8 @@ class Schema {
 
   insertOne(set) {
     return new Promise((resolve, reject) => {
-      connection.query(`INSERT INTO ${this.table} SET ?`,
-      set,
+      connection.query(`INSERT INTO ?? SET ?`,
+      [this.table, set],
       (err, res) => {
         if(err) reject(err)
         else resolve(res)
@@ -27,9 +27,9 @@ class Schema {
 
   updateOne(set, where) {
     return new Promise((resolve, reject) => {
-      connection.query(`UPDATE ${this.table} 
+      connection.query(`UPDATE ??
                         SET ? WHERE ?;`,
-      [set, where],
+      [this.table, set, where],
       (err, res) => {
         if(err) reject(err)
         else resolve(res)
@@ -39,9 +39,9 @@ class Schema {
 
   deleteOne(where) {
     return new Promise((resolve, reject) => {
-      connection.query(`DELETE FROM ${this.table} 
+      connection.query(`DELETE FROM ??
                         WHERE ?;`,
-      where,
+      [this.table, where],
       (err, res) => {
         if(err) reject(err)
         else resolve(res) 
