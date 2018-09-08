@@ -4,40 +4,48 @@ class Schema {
   constructor(table) {
     this.table = table
   }
-  selectAll(next) {
-    connection.query(`SELECT * FROM ${this.table}`, 
-    (err, res) => {
-      if(err) throw err
-      next(res)
-    })
+  selectAll() {
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT * FROM ${this.table}`, 
+      (err, res) => {
+        if(err) reject(err)
+        else resolve(res)
+      })
+    }) 
   }
 
   insertOne(set) {
-    connection.query(`INSERT INTO ${this.table} SET ?`,
-    set,
-    (err, res) => {
-      if(err) throw err
-      console.log(res)
+    return new Promise((resolve, reject) => {
+      connection.query(`INSERT INTO ${this.table} SET ?`,
+      set,
+      (err, res) => {
+        if(err) reject(err)
+        else resolve(res)
+      })
     })
   }
 
   updateOne(set, where) {
-    connection.query(`UPDATE ${this.table} 
-                      SET ? WHERE ?;`,
-    [set, where],
-    (err, res) => {
-      if(err) throw err
-      console.log(res)
-    })
+    return new Promise((resolve, reject) => {
+      connection.query(`UPDATE ${this.table} 
+                        SET ? WHERE ?;`,
+      [set, where],
+      (err, res) => {
+        if(err) reject(err)
+        else resolve(res)
+      })
+    })  
   }
 
   deleteOne(where) {
-    connection.query(`DELETE FROM ${this.table} 
-                      WHERE ?;`,
-    where,
-    (err, res) => {
-      if(err) throw err
-      console.log(res)
+    return new Promise((resolve, reject) => {
+      connection.query(`DELETE FROM ${this.table} 
+                        WHERE ?;`,
+      where,
+      (err, res) => {
+        if(err) reject(err)
+        else resolve(res)
+      })
     })
   }
 }
