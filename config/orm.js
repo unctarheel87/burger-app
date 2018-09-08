@@ -7,7 +7,7 @@ class Schema {
   selectAll() {
     return new Promise((resolve, reject) => {
       connection.query(`SELECT * FROM ??`, 
-      [this.table], (err, res) => {
+      this.table, (err, res) => {
         if(err) reject(err)
         else resolve(res)
       })
