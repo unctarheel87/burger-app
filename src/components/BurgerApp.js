@@ -66,6 +66,7 @@ export default class Burger extends Component {
           <input type="text" name="burger"/>
           <button className="waves-effect waves-light btn red lighten-2 burger-submit-btn" 
                   type="submit"
+                  placeholder="Add your burger..."
           >Create Burger</button>
         </form>
       </div>
