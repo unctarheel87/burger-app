@@ -63,10 +63,9 @@ export default class Burger extends Component {
                  deleteBurger={this.deleteBurger}
         />
         <form className="new-burger" onSubmit={this.addBurger}>
-          <input type="text" name="burger"/>
+          <input type="text" name="burger" placeholder="Add your burger..."/>
           <button className="waves-effect waves-light btn red lighten-2 burger-submit-btn" 
                   type="submit"
-                  placeholder="Add your burger..."
           >Create Burger</button>
         </form>
       </div>
