@@ -1,18 +1,22 @@
 import React from 'react'
+import { Collapsible, CollapsibleItem } from 'react-materialize'
+import { Toppings } from './Toppings'
 
 export const Burgers = (props) => {
   const burgerList = props.burgers.map((burger) => {
     if(burger.devoured === 0) {
       return (
         <div className="burger-card">
-          <div className="card">
-            <p>{burger.burger_name}</p>
-          </div>  
+          <Collapsible popout defaultActiveKey={1}>
+            <CollapsibleItem header={burger.burger_name} icon='menu'>
+              <Toppings toppings={burger.toppings} />
+            </CollapsibleItem>
+          </Collapsible>
           <button className="waves-effect waves-light btn red lighten-2 update-burger-btn"
                   onClick={(e) => {
                     props.updateBurger(e, burger.id)
                   }}
-          ><i class="material-icons left">local_dining</i>Devour It!</button>
+          ><i class="material-icons left">local_dining</i>Devour!</button>
         </div>
       )
     }

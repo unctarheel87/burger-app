@@ -9,3 +9,10 @@ CREATE TABLE burgers (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE toppings (
+  id int NOT NULL AUTO_INCREMENT,
+  topping_name VARCHAR(30) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id) REFERENCES burgers(id)
+);
+

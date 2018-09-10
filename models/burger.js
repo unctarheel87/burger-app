@@ -1,5 +1,8 @@
 const Schema = require('../config/orm');
 
 const burgers = new Schema('burgers')
+const toppings = new Schema('toppings')
 
-module.exports = burgers
+module.exports = {
+  burgers, toppings
+}
